@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   p_print_hex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfontive <dfontive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/19 18:40:16 by dfontive          #+#    #+#             */
-/*   Updated: 2024/12/19 18:40:47 by dfontive         ###   ########.fr       */
+/*   Created: 2024/12/19 15:49:45 by dfontive          #+#    #+#             */
+/*   Updated: 2024/12/19 18:41:07 by dfontive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#include "printf.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdarg.h>
-# include <stdint.h>
+void	p_print_hex(void *ptr)
+{
+	char		*hex_digits;
+	char		buffer[16];
+	int			i;
+	uintptr_t	addr;
 
-void	c_putchar(char c);
-void	s_putstr(char *str);
-void	p_print_hex(void *ptr);
-void	i_putnbr(int nbr);
+	i = 14;
+	hex_digits = "0123456789abcdef";
+	addr = (uintptr_t)ptr;
+	while (i >= 0)
+	{
+		buffer[i] = hex_digits[addr & 0xF];
+		addr >>= 4;
+		i--;
+	}
+	write (1, "0x", 2);
+	write (1, buffer, 16);
+}
 
-#endif
+/* int	main(void)
+{
+	void *ptr = "hello";
+	p_print_hex(ptr);
+} */

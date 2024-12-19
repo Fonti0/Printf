@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   i_putnbr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfontive <dfontive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/19 18:40:16 by dfontive          #+#    #+#             */
-/*   Updated: 2024/12/19 18:40:47 by dfontive         ###   ########.fr       */
+/*   Created: 2024/12/19 18:20:11 by dfontive          #+#    #+#             */
+/*   Updated: 2024/12/19 18:41:41 by dfontive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#include "printf.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdarg.h>
-# include <stdint.h>
+void	d_putnbr(int nbr)
+{
+	char	result;
 
-void	c_putchar(char c);
-void	s_putstr(char *str);
-void	p_print_hex(void *ptr);
-void	i_putnbr(int nbr);
+	if (nbr == -2147483648)
+		write (1, "-2147483648", 11);
+	else if (nbr < 0)
+	{
+		write (1, "-", 1);
+		nbr = -nbr;
+		d_putnbr (nbr);
+	}
+	else
+	{
+		if (nbr > 9)
+			d_putnbr (nbr / 10);
+		result = (nbr % 10) + '0';
+		write (1, &result, 1);
+	}
+}
 
-#endif
+/* int	main(void)
+{
+	d_putnbr(2222222222);
+} */
