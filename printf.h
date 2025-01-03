@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfontive <dfontive@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 18:40:16 by dfontive          #+#    #+#             */
-/*   Updated: 2024/12/19 18:40:47 by dfontive         ###   ########.fr       */
+/*   Updated: 2025/01/03 16:27:27 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ void	c_putchar(char c);
 void	s_putstr(char *str);
 void	p_print_hex(void *ptr);
 void	i_putnbr(int nbr);
+void	u_putnbr(int nb);
 
 #endif

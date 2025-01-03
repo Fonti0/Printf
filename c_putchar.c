@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c_putchar.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfontive <dfontive@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 20:09:20 by dfontive          #+#    #+#             */
-/*   Updated: 2024/12/18 20:11:44 by dfontive         ###   ########.fr       */
+/*   Updated: 2025/01/03 13:32:27 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	c_putchar(char c)
 	write (1, &c, 1);
 }
 
-/* int main(void)
-{
-	c_putchar('a');
-} */
+// int main(void)
+// {
+// 	c_putchar('p');
+// 	write (1, "\n", 1);
+// }

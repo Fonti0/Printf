@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfontive <dfontive@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:50:50 by dfontive          #+#    #+#             */
-/*   Updated: 2024/12/19 18:42:34 by dfontive         ###   ########.fr       */
+/*   Updated: 2025/01/03 16:28:07 by daniel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,16 @@ int	ft_printf(const char *format, ...)
 			{}
 			if (format [i + 1] == 'i')
 			{
-				int	nbr = va_arg (arg, int);
-				i_putnbr(nbr);
+				int	inbr = va_arg (arg, int);
+				i_putnbr(inbr);
 				i += 2;
 			}
 			if (format [i + 1] == 'u')
-			{}
+			{
+				int unbr = va_arg (arg, int);
+				u_putnbr(unbr);
+				i += 2;
+			}
 			if (format [i + 1] == 'x')
 			{}
 			if (format [i + 1] == 'X')
