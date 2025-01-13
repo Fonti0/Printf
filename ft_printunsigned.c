@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_putstr.c                                         :+:      :+:    :+:   */
+/*   ft_printunsigned.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dfontive <dfontive@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/19 14:55:37 by dfontive          #+#    #+#             */
-/*   Updated: 2025/01/03 13:24:21 by daniel           ###   ########.fr       */
+/*   Created: 2025/01/12 21:36:25 by dfontive          #+#    #+#             */
+/*   Updated: 2025/01/13 15:36:38 by dfontive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-void	s_putstr(char *str)
+int	ft_printunsigned(unsigned int nbr)
 {
-	int	i;
+	int		count;
+	char	result;
 
-	i = 0;
-	while (str[i])
-	{
-		write (1, &str[i], 1);
-		i++;
-	}
+	count = 0;
+	if (nbr > 9)
+		count += ft_printunsigned(nbr / 10);
+	result = (nbr % 10) + '0';
+	write (1, &result, 1);
+	count++;
+	return (count);
 }
-
-/* int	main(void)
-{
-	s_putstr("hello, my name is");
-} */

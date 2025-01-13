@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dfontive <dfontive@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/19 18:40:16 by dfontive          #+#    #+#             */
-/*   Updated: 2025/01/03 16:27:27 by daniel           ###   ########.fr       */
+/*   Created: 2025/01/10 15:20:36 by daniel            #+#    #+#             */
+/*   Updated: 2025/01/13 14:44:27 by dfontive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdarg.h>
-# include <stdint.h>
 
-void	c_putchar(char c);
-void	s_putstr(char *str);
-void	p_print_hex(void *ptr);
-void	i_putnbr(int nbr);
-void	u_putnbr(int nb);
+int	ft_printf(const char *format, ...);
+int	ft_conversion(char c, va_list *args);
+int	ft_printchar(char c);
+int	ft_printhex(unsigned long long nbr, char c);
+int	ft_printnbr(int nbr);
+int	ft_printptr(unsigned long long ptr);
+int	ft_printstr(char *str);
+int	ft_printunsigned(unsigned int nbr);
 
 #endif

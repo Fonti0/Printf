@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_putchar.c                                        :+:      :+:    :+:   */
+/*   ft_printstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dfontive <dfontive@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/18 20:09:20 by dfontive          #+#    #+#             */
-/*   Updated: 2025/01/03 13:32:27 by daniel           ###   ########.fr       */
+/*   Created: 2024/12/19 14:55:37 by dfontive          #+#    #+#             */
+/*   Updated: 2025/01/13 15:36:00 by dfontive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-void	c_putchar(char c)
+int	ft_printstr(char *str)
 {
-	write (1, &c, 1);
-}
+	int	i;
 
-// int main(void)
-// {
-// 	c_putchar('p');
-// 	write (1, "\n", 1);
-// }
+	i = 0;
+	if (!str)
+		return (ft_printstr("(null)"));
+	while (str[i])
+	{
+		write (1, &str[i], 1);
+		i++;
+	}
+	return (i);
+}

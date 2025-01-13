@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p_print_hex.c                                      :+:      :+:    :+:   */
+/*   ft_printptr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfontive <dfontive@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dfontive <dfontive@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 15:49:45 by dfontive          #+#    #+#             */
-/*   Updated: 2024/12/19 18:41:07 by dfontive         ###   ########.fr       */
+/*   Updated: 2025/01/13 15:36:13 by dfontive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-void	p_print_hex(void *ptr)
+int	ft_printptr(unsigned long long ptr)
 {
-	char		*hex_digits;
-	char		buffer[16];
-	int			i;
-	uintptr_t	addr;
+	int	count;
 
-	i = 14;
-	hex_digits = "0123456789abcdef";
-	addr = (uintptr_t)ptr;
-	while (i >= 0)
+	count = 0;
+	if (!ptr)
 	{
-		buffer[i] = hex_digits[addr & 0xF];
-		addr >>= 4;
-		i--;
+		ft_printstr("(nil)");
+		return (5);
 	}
-	write (1, "0x", 2);
-	write (1, buffer, 16);
+	else
+	{
+		count += ft_printstr ("0x");
+		count += ft_printhex(ptr, 'x');
+	}
+	return (count);
 }
-
-/* int	main(void)
-{
-	void *ptr = "hello";
-	p_print_hex(ptr);
-} */

@@ -3,74 +3,59 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dfontive <dfontive@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:50:50 by dfontive          #+#    #+#             */
-/*   Updated: 2025/01/03 16:28:07 by daniel           ###   ########.fr       */
+/*   Updated: 2025/01/13 15:34:44 by dfontive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
+
+int	ft_conversion(char c, va_list *args)
+{
+	int	count;
+
+	count = 0;
+	if (c == 'c')
+		count += ft_printchar(va_arg(*args, int));
+	if (c == 's')
+		count += ft_printstr(va_arg(*args, char *));
+	if (c == 'p')
+		count += ft_printptr(va_arg(*args, unsigned long long));
+	if (c == 'd' || c == 'i')
+		count += ft_printnbr(va_arg(*args, int));
+	if (c == 'u')
+		count += ft_printunsigned(va_arg(*args, unsigned int));
+	if (c == 'x')
+		count += ft_printhex(va_arg(*args, unsigned int), 'x');
+	if (c == 'X')
+		count += ft_printhex(va_arg(*args, unsigned int), 'X');
+	if (c == '%')
+		count += ft_printchar('%');
+	return (count);
+}
 
 int	ft_printf(const char *format, ...)
 {
+	va_list	args;
 	int		i;
-	int		x;
-	va_list	arg;
+	int		count;
 
 	i = 0;
-	x = 0;
-	va_start (arg, format);
+	count = 0;
+	va_start (args, format);
 	while (format[i])
 	{
-		if (format[i] == '%')
+		if (format[i] != '%')
+			count += ft_printchar(format[i]);
+		else
 		{
-			if (format[i + 1] == 'c')
-			{
-				int	c = va_arg (arg, int);
-				c_putchar(c);
-				i += 2;
-			}
-			if (format [i + 1] == 's')
-			{
-				char	*str = va_arg (arg, char *);
-				s_putstr(str);
-				i += 2;
-			}
-			if (format [i + 1] == 'p')
-			{
-				void	*ptr = va_arg (arg, void *);
-				p_print_hex(ptr);
-				i += 2;
-			}
-			if (format [i + 1] == 'd')
-			{}
-			if (format [i + 1] == 'i')
-			{
-				int	inbr = va_arg (arg, int);
-				i_putnbr(inbr);
-				i += 2;
-			}
-			if (format [i + 1] == 'u')
-			{
-				int unbr = va_arg (arg, int);
-				u_putnbr(unbr);
-				i += 2;
-			}
-			if (format [i + 1] == 'x')
-			{}
-			if (format [i + 1] == 'X')
-			{}
-			if (format [i + 1] == '%')
-			{}
+			i++;
+			count += ft_conversion(format[i], &args);
 		}
-		write(1, &format[i], 1);
 		i++;
 	}
-	return (i + x);
-}
-
-int	main(void)
-{
-	ft_printf("Hola, me llamo %s y tengo %c años", "123", 'a');
+	va_end(args);
+	return (count);
 }

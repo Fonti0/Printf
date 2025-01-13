@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Pruebas.c                                          :+:      :+:    :+:   */
+/*   ft_printchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel <daniel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dfontive <dfontive@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 23:13:02 by daniel            #+#    #+#             */
-/*   Updated: 2025/01/02 23:13:31 by daniel           ###   ########.fr       */
+/*   Created: 2024/12/18 20:09:20 by dfontive          #+#    #+#             */
+/*   Updated: 2025/01/13 15:35:05 by dfontive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-int	main(void)
+int	ft_printchar(char c)
 {
-	printf("%i", 9823473);
+	write (1, &c, 1);
+	return (1);
 }
